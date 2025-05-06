@@ -7,10 +7,6 @@ export const countryRoutes: Routes = [
         path: '',
         component: ByCapitalPageComponent,
     },
-/*     {
-        path: '**',
-        redirectTo: ''
-    } */
 ];
 
 export default countryRoutes;
