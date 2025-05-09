@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 
 @Component({
-  selector: 'by-region-page',
-  standalone: true,
-  imports: [CountryListComponent],
-  templateUrl: './by-region-page.component.html',
+    selector: 'by-region-page',
+    imports: [CountryListComponent],
+    templateUrl: './by-region-page.component.html'
 })
 export class ByRegionPageComponent { }
