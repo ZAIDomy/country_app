@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { RESTCountry } from '../interfaces/rest-country.interface';
 
 const API_URL = 'https://restcountries.com/v3.1';
 
@@ -11,9 +12,10 @@ export class CountryService {
   private http = inject(HttpClient);
 
   searchByCapital(query: string){
+
     query=query.toLowerCase();
 
-    return this.http.get(`${API_URL}/capital/${query}`);
+    return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`);
   }
 
 }
