@@ -28,7 +28,9 @@
                 </span>
               </td>
               <td>
-                <a class="btn btn-info btn-xs cursor-pointer">Mas info</a>
+                <a 
+                [routerLink]="['/country/by',country.cca2]" 
+                class="btn btn-info btn-xs cursor-pointer">Mas info</a>
               </td>
             </tr>
           }

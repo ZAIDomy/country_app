@@ -1,1 +1,10 @@
-<country-search-input placeholder="Buscar por país"/>
+<country-search-input placeholder="Buscar por país"
+(value)="query.set($event)"
+/>
+
+@if (countryResourse.error()) {
+    <h3 class="mt-3">{{countryResourse.error()}}</h3>
+}@if(countryResourse.hasValue()) {
+    <country-list [countries]="countryResourse.value()!"/>
+
+}
