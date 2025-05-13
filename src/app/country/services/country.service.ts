@@ -18,7 +18,7 @@ export class CountryService {
 
     query=query.toLowerCase();
 
-    return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`).pipe( 
+    return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`).pipe(
       map((resp)=> CountryMapper.mapRestCountryArraytoCountryArray(resp)),
       catchError((error)=>{
         console.log('Error fetching',error);
@@ -32,12 +32,27 @@ export class CountryService {
 
     query=query.toLowerCase();
 
-    return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`).pipe( 
+    return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`).pipe(
       map((resp)=> CountryMapper.mapRestCountryArraytoCountryArray(resp)),
       delay(1500),
       catchError((error)=>{
         console.log('Error fetching',error);
         return throwError(()=> new Error(`No se pudo obtener pais con ese query: ${query}`)
+      );
+      })
+    );
+  }
+
+    searchByCountryID(code: string){
+
+      const url= `${API_URL}/alpha/${code}`;
+
+    return this.http.get<RESTCountry[]>(url).pipe(
+      map((resp)=> CountryMapper.mapRestCountryArraytoCountryArray(resp)),
+      map((countries)=>countries.at(0)),
+      catchError((error)=>{
+        console.log('Error fetching',error);
+        return throwError(()=> new Error(`No se pudo obtener pais con ese code: ${code}`)
       );
       })
     );
