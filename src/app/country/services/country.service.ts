@@ -17,7 +17,7 @@ export class CountryService {
   searchByCapital(query: string):Observable<Country[]>{
 
     query=query.toLowerCase();
-
+    console.log(`emitiendo un valor ${query}`);
     return of([]);
 
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`).pipe(
