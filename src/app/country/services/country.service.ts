@@ -17,8 +17,8 @@ export class CountryService {
   searchByCapital(query: string):Observable<Country[]>{
 
     query=query.toLowerCase();
-    console.log(`emitiendo un valor ${query}`);
-    return of([]);
+/*     console.log(`emitiendo un valor ${query}`);
+    return of([]); */
 
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`).pipe(
       map((resp)=> CountryMapper.mapRestCountryArraytoCountryArray(resp)),
@@ -45,7 +45,7 @@ export class CountryService {
     );
   }
 
-    searchByCountryID(code: string){
+  searchByCountryID(code: string){
 
       const url= `${API_URL}/alpha/${code}`;
 
